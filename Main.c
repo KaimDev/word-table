@@ -7,20 +7,20 @@
 
 bool NewWordTable(
     char**** word_table,
-    const size_t matriz_count,
-    const size_t array_count
+    const size_t rows,
+    const size_t columns
 )
 {
-    char*** table = (char***)malloc(sizeof(char **) * matriz_count);
+    char*** table = (char***)malloc(sizeof(char **) * rows);
 
     if (table == NULL)
     {
         return false;
     }
 
-    for (size_t i = 0 ; i < matriz_count ; ++i)
+    for (size_t i = 0 ; i < rows ; ++i)
     {
-        table[i] = (char**)malloc(sizeof(char*) * array_count);
+        table[i] = (char**)malloc(sizeof(char*) * columns);
 
         if (table[i] == NULL)
         {
@@ -143,7 +143,7 @@ int32_t main(void)
         }
     }
 
-    ViewTable(word_table, rows, columns);
+    ViewTable((const char***)word_table, rows, columns);
     FreeMemory(word_table, rows, columns);
     return EXIT_SUCCESS;
 }
